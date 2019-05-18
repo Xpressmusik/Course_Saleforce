@@ -1,0 +1,81 @@
+<!--<apex:page controller="ProductController"  showHeader="true" standardStylesheets="true" sidebar="true" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0"> -->
+<apex:page controller="DescriptionProductController" docType="html-5.0"> <!--extensions="DescriptionProductController"-->
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>List product page</title> 
+        <apex:slds /> 
+    </head>
+    <!-- PAGE HEADER -->
+    <div class="slds-page-header" role="banner">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <!-- HEADING AREA -->
+                <h1 class="slds-page-header__title slds-truncate" title="Product List">Product List</h1>
+                <!-- / HEADING AREA -->
+            </div>
+        </div>
+    </div>
+    <apex:form >
+        <!-- / PAGE HEADER -->
+        <table class="slds-table table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+            <thead>
+                <tr class="slds-text-align--center">
+                    <th scope="col"><div class="slds-text-align--center">IMAGE</div></th>
+                    <th scope="col"><div class="slds-text-align--center">NAME</div></th>
+                    <th scope="col"><div class="slds-text-align--center">TITLE</div></th>
+                    <th scope="col"><div class="slds-text-align--center">DESCRIPTION</div></th>
+                    <th scope="col"><div class="slds-text-align--center">COST</div></th>
+                    <th scope="col"><div></div></th>
+                    <!-- class="slds-col slds-size_1-of-6"-->
+                </tr>
+            </thead>
+            <apex:repeat value="{!listProduct}" var="objProduct"> 
+                <tr>
+                    <!--Image-->
+                    <th scope="row" style="display: flex; justify-content: center; align-content: center;">
+                        <apex:image url="{!objProduct.Image_Url__c}" alt="{!objProduct.name}" style="height: 150px;"> </apex:image>
+                    </th>
+                    <!--Name-->
+                    <th class="slds-text-align_center" role="gridcell">
+                        <div title="{!objProduct.name}"> 
+                            <a href= "https://www.google.com/search?q={!objProduct.name}" target="_blank">
+                                <div class ="slds-align-middle slds-col--padded">
+                                    {!objProduct.name}
+                                </div>
+                            </a>
+                        </div>
+                    </th>
+                    <!--Title-->
+                    <th role="gridcell">
+                        <div class ="slds-grid--align-center">
+                            <div class="slds-truncate" align = "left" title ="{!objProduct.Title__c}">
+                                {!objProduct.Title__c}
+                            </div>
+                        </div>
+                    </th>
+                    <!--Desription-->
+                    <th scope = "col" role="gridcell">
+                        <div>
+                            <div class="slds-truncate" align = "left" title = "{!objProduct.Product_Description__c}">  
+                                {!objProduct.Product_Description__c} 
+                            </div>
+                            <a href = "/apex/DescriptionPage?core.apexpages.request.devconsole=1&id={!objProduct.Id}" >more</a>
+                        </div>
+                    </th>
+                    <!--Price-->
+                    <th class="slds-text-align_center" role="gridcell">
+                        <div title = "{!objProduct.Unit_Price__c}">
+                            {!objProduct.Unit_Price__c} $
+                        </div>
+                    </th>
+                    <!--Button-->
+                    <th role="gridcell">
+                        <div class="slds-grid slds-grid slds-col slds-grid--align-center slds-col slds-align-middle">
+                            <a class="slds-button slds-button_brand" href="apex/OrderPage?core.apexpages.request.devconsole=1&id={!objProduct.Id}">Buy</a>
+                        </div>
+                    </th>
+                </tr>
+            </apex:repeat>
+        </table>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,49 @@
+<apex:page controller="DescriptionProductController"  showHeader="true" standardStylesheets="true" sidebar="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0">
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>Order Page</title> 
+        <apex:slds /> 
+    </head>
+    <form>
+        <!-- PAGE HEADER -->
+        <div style="margin-bottom: 50px;">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate slds-text-align--center">
+                        <!-- HEADING AREA -->
+                        <h1 class="slds-page-header__title slds-truncate" title="{!queryProduct.Name}">{!queryProduct.name}</h1>
+                        <!-- / HEADING AREA -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                <div class="slds-grid slds-grid--align-center slds-align-middle"> 
+                    <apex:image url="{!queryProduct.Image_Url__c}" title="{!queryProduct.Name}" alt="{!queryProduct.Name}" style="height: 400px; weight: 250px;"  > </apex:image>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">    
+                <h1>AMOUNT: </h1><div style='margin-bottom: 20px;'> <apex:outputText style="font-style:italic"><span>{!queryProduct.Units_Available__c}</span></apex:outputText></div>
+                <h1>TITLE: </h1><div style='margin-bottom: 20px;'><apex:outputText style="font-style:italic"><span>{!queryProduct.Title__c}</span></apex:outputText></div>
+                <h1>DESCRIPTION:</h1> <div style='margin-bottom: 20px;'><apex:outputText style="font-style:italic"><span>{!queryProduct.Product_Description__c}</span></apex:outputText></div>    
+            </div>
+        </div>   
+        
+        <div style="margin-top: 50px;">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate slds-text-align--center">
+                        <div class="slds-grid" role = "banner">
+                            <div class="slds-col slds-has-flexi-truncate slds-text-align--center" >
+                                <a class="slds-button slds-button_neutral" href="apex/ProductPage?core.apexpages.request.devconsole=1">To Shopping</a>
+                                <a class="slds-button slds-button_brand" href="apex/OrderPage?core.apexpages.request.devconsole=1&id={!queryProduct.Id}">Buy</a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</apex:page>

@@ -1,0 +1,17 @@
+{
+    "projectName": "Project_week_3",
+    "username": "artems@testorg.mog",
+    "id": "5f997ca0-7980-11e9-9601-5f25599ee4ba",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://ap8.salesforce.com",
+    "workspace": "C:\\Users\\Asus\\Documents",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

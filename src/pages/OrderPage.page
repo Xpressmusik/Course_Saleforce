@@ -1,0 +1,74 @@
+<apex:page controller="OrderController" docType="HTML-5.0">
+    <head>
+        <title>Order Page</title>
+        <meta charset="utf-8" />
+        <apex:slds />
+        <apex:pageMessages />
+    </head>
+    <!-- PAGE HEADER -->
+    <div class="slds-page-header" role="banner">
+        <div class="slds-grid">
+            <div class="slds-col slds-size--1-of-2 slds-text-align--center">
+                <!-- HEADING AREA -->
+                <h1 class="slds-page-header__title slds-truncate" title="Product List">Contact Information</h1>
+                <!-- / HEADING AREA -->
+            </div>
+            <div class="slds-col slds-size--1-of-2 slds-text-align--center">
+                <!-- HEADING AREA -->
+                <h1 class="slds-page-header__title slds-truncate" title="Product List">Product Information</h1>
+                <!-- / HEADING AREA -->
+            </div>  
+        </div>
+    </div>
+    <apex:form >
+        <div class="slds-grid">
+            <div class="slds-col slds-size--1-of-2 slds-text-align--center">
+                <apex:pageBlock id="results" >
+                    <apex:pageBlockSection columns="1">
+                        <apex:input id="email" value="{!currentEmail}" label="Email">
+                            <apex:actionSupport event="onchange" action="{!searchContact}" rerender="firstname,lastname"/>
+                            <!--  <apex:actionStatus id="searchStatus" startText=" (searching...)" />-->
+                        </apex:input>
+                        <apex:input id="firstname" value="{!FirstName}" label="First Name" type="text"/>
+                        <apex:input id="lastname" value="{!lastName}" label="Last Name" type="text"/>
+                        <!-- <apex:inputField  label="Product Name" type="text"/>
+<apex:inputField  label="Cost" type="text"/>
+<apex:inputField  label="Unit Count" type="text"/>   
+<apex:inputField  label="Total Amount" type="text"/>-->
+                    </apex:pageBlockSection>   
+                </apex:pageBlock>      
+            </div>
+            <div class="slds-col slds-size--1-of-2 slds-text-align--center">
+                <apex:pageBlock id="pro">
+                    <apex:pageBlockSection columns="1" >
+                        <apex:outputText id="name" value="{!productName}" label="Product Name"/>
+                        <apex:outputText id="cost" value="{!Cost}" label="Total Amount"/>
+                        <apex:input id="count" value="{!unitCount}" label="Unit Count" type="text">
+                            <apex:actionSupport event="onkeyup" action="{!countAmount}" rerender="amount"/>
+                            <!--   <apex:actionStatus id="totalStatus" startText=" (calculate...)" />-->
+                        </apex:input>
+                        <apex:outputText id="amount" value="{!totalAmount}" label="Total Amount" />
+                    </apex:pageBlockSection>   
+                </apex:pageBlock>
+                
+            </div>
+        </div>
+        <div>
+            <div class="slds-page-header" role="banner">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate slds-text-align--center">
+                        <div class="slds-grid" role = "banner">
+                            <div class="slds-col slds-has-flexi-truncate slds-text-align--center" >
+                                <a class="slds-button slds-button_neutral" href="apex/ProductPage?core.apexpages.request.devconsole=1" role = "button">To Shopping</a>
+                                <!--<a class="slds-button slds-button_brand" value="Buy" action = "{!Buy}"/> -->
+                                <!--  <apex:commandButton value="Buy"  action="{!Buy}" style="margin-right:5px"/>-->
+                                <apex:commandLink styleClass="slds-m-top_xx-small slds-button slds-button_neutral btnSubmit"  style="margin: 0 auto;" action="{!Buy}" value="Buy" id="theCommandLink"/>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </apex:form>
+</apex:page>
